@@ -25,6 +25,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define Z80_R16(r16)                union { uint16_t r16; unsigned e##r16; }
 #define Z80_R16_HL(r16, r8h, r8l)   union { uint16_t r16; struct { uint8_t r8l, r8h; }; unsigned e##r16; }
 #define Z80_R8(r8)                  union { uint8_t r8; unsigned e##r8; }
@@ -145,5 +149,9 @@ void Z80_Exec_FD(Z80_State *state, uint8_t opcode);
 
 void Z80_Exec_DDCB(Z80_State *state, uint8_t opcode, int8_t offset);
 void Z80_Exec_FDCB(Z80_State *state, uint8_t opcode, int8_t offset);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //_Z80_H

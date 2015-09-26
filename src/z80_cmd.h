@@ -25,6 +25,10 @@
 
 #include "z80.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define S(s)    state->s
 #define R(r)    S(regs.r)
 
@@ -579,5 +583,9 @@ static __inline int P(uint8_t value)
         (P(((v + rL) & 7) ^ rB) ? fP : 0) |\
         (((v + rL) & 256) ? fH | fC : 0);\
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //_Z80_CMD_H
