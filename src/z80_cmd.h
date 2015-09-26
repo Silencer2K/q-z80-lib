@@ -27,6 +27,9 @@
 
 #ifdef __cplusplus
 extern "C" {
+#ifndef __cplusplus
+}
+#endif
 #endif
 
 #define S(s)    state->s
@@ -585,6 +588,9 @@ static __inline int P(uint8_t value)
 }
 
 #ifdef __cplusplus
+#ifndef __cplusplus
+{
+#endif
 }
 #endif
 

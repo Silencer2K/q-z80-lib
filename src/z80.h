@@ -27,6 +27,9 @@
 
 #ifdef __cplusplus
 extern "C" {
+#ifndef __cplusplus
+}
+#endif
 #endif
 
 #define Z80_R16(r16)                union { uint16_t r16; unsigned e##r16; }
@@ -151,6 +154,9 @@ void Z80_Exec_DDCB(Z80_State *state, uint8_t opcode, int8_t offset);
 void Z80_Exec_FDCB(Z80_State *state, uint8_t opcode, int8_t offset);
 
 #ifdef __cplusplus
+#ifndef __cplusplus
+{
+#endif
 }
 #endif
 
