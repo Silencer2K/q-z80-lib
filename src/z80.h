@@ -83,6 +83,9 @@ struct Z80_State
 
     unsigned T;
 
+    unsigned M1;
+    unsigned NMI, IRQ;
+
     unsigned IFF1, IFF2;
     unsigned IM;
 

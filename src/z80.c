@@ -115,7 +115,9 @@ uint16_t Z80_Read_16(Z80_State *state, uint16_t addr)
 uint8_t Z80_Read_IO(Z80_State *state, uint16_t addr)
 {
     state->T += 1;
+
     uint8_t value = state->read_io(state->data, addr);
+
     state->T += 3;
 
     return value;
@@ -124,8 +126,15 @@ uint8_t Z80_Read_IO(Z80_State *state, uint16_t addr)
 uint8_t Z80_Fetch_Cmd(Z80_State *state)
 {
     state->regs.R = (state->regs.R & 0x80) | ((state->regs.R + 1) & 0x7F);
+
     state->T += 4;
-    return state->read(state->data, state->regs.PC++);
+    state->M1 = 1;
+
+    uint8_t value = state->read(state->data, state->regs.PC++);
+
+    state->M1 = 0;
+
+    return value;
 }
 
 uint8_t Z80_Fetch_Arg(Z80_State *state)
