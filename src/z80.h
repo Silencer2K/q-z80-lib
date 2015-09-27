@@ -104,7 +104,9 @@ typedef struct Z80_State Z80_State;
 
 // initialization
 
-Z80_State *Z80_Init(void *data, Z80_Read_CB *read, Z80_Read_IO_CB *read_io, Z80_Write_CB *write, Z80_Write_IO_CB *write_io);
+Z80_State *Z80_Init(void *data, Z80_Read_CB *read, Z80_Read_IO_CB *read_io,
+    Z80_Write_CB *write, Z80_Write_IO_CB *write_io);
+
 void Z80_Free(Z80_State *state);
 
 // control
